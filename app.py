@@ -21,7 +21,7 @@ def generate_response(prompt, generator):
         max_length=len(prompt.encode('utf-8')) + 60,
         num_return_sequences=1,
         no_repeat_ngram_size=2,
-        temperature=0.7,
+        temperature=0.1,
         top_k=40
     )
     full_text = generated[0]['generated_text']
@@ -40,7 +40,7 @@ generator = load_model()
 # st.session_state - это специальный объект Streamlit, который не сбрасывается
 # при взаимодействиях пользователя.
 if 'history' not in st.session_state:
-    st.session_state['history'] = ""
+    st.session_state['history'] = "Ты - вежливый и полезный чат-бот-ассистент по имени Нейроныч. Ты отвечаешь на вопросы кратко и по делу .\n"
 
 # Выводим историю чата на экран
 if st.session_state.history:
